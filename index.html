@@ -1,0 +1,861 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>RiteHome Suite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#14181d;
+    --ink2:#4a5561;
+    --ink3:#8a95a1;
+    --line:#e2e6eb;
+    --bg:#f4f6f3;
+    --card:#ffffff;
+    --charcoal:#20201e;
+    --charcoal2:#2c2c29;
+    --red:#c52527;
+    --redDeep:#8e1b1d;
+    --redBg:#f7dedb;
+    --ok:#1a7a5c;
+    --okBg:#dcefe4;
+    --blue:#2f6fa8;
+    --blueBg:#e0ebf4;
+    --amber:#a8791f;
+    --amberBg:#f3e6c9;
+    --orange:#b1531f;
+    --orangeBg:#f4ddc9;
+    --purple:#7d4f96;
+    --purpleBg:#ede0f2;
+    --brown:#7a5a37;
+    --brownBg:#ece0cc;
+    --shadow: 0 1px 2px rgba(20,24,29,.04), 0 10px 28px rgba(20,24,29,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#eef0ec;
+      --ink2:#b7bfb9;
+      --ink3:#828a84;
+      --line:#34362f;
+      --bg:#161711;
+      --card:#1d1e18;
+      --charcoal:#0e0f0b;
+      --charcoal2:#26271f;
+      --red:#e2484a;
+      --redDeep:#ff6e70;
+      --redBg:#3d1c1c;
+      --ok:#3fb992;
+      --okBg:#173c2c;
+      --blue:#6fb3e0;
+      --blueBg:#1c3448;
+      --amber:#e0b062;
+      --amberBg:#3c2f14;
+      --orange:#e2895a;
+      --orangeBg:#3c2413;
+      --purple:#c79bdb;
+      --purpleBg:#332840;
+      --brown:#c7a273;
+      --brownBg:#332818;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#eef0ec;
+    --ink2:#b7bfb9;
+    --ink3:#828a84;
+    --line:#34362f;
+    --bg:#161711;
+    --card:#1d1e18;
+    --charcoal:#0e0f0b;
+    --charcoal2:#26271f;
+    --red:#e2484a;
+    --redDeep:#ff6e70;
+    --redBg:#3d1c1c;
+    --ok:#3fb992;
+    --okBg:#173c2c;
+    --blue:#6fb3e0;
+    --blueBg:#1c3448;
+    --amber:#e0b062;
+    --amberBg:#3c2f14;
+    --orange:#e2895a;
+    --orangeBg:#3c2413;
+    --purple:#c79bdb;
+    --purpleBg:#332840;
+    --brown:#c7a273;
+    --brownBg:#332818;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.55;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  a{color:inherit}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace}
+
+  /* ---------- header / hero ---------- */
+  header.hero{
+    background:var(--charcoal);
+    color:#f4f2ea;
+    padding:0 0 0;
+    border-bottom:4px solid var(--red);
+  }
+  .heroWrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:22px 28px 64px;
+  }
+  .brandRow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding-bottom:56px;
+    border-bottom:1px solid rgba(244,242,234,.14);
+  }
+  .wordmark{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:"Big Shoulders Display",sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .wordmark .sq{
+    width:11px;height:11px;background:var(--red);display:inline-block;border-radius:2px;
+    transform:translateY(-1px);
+  }
+  .wordmark small{
+    font-family:"IBM Plex Mono",monospace;
+    font-weight:400;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:rgba(244,242,234,.55);
+  }
+  .tag{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;
+    letter-spacing:.06em;
+    color:rgba(244,242,234,.6);
+    border:1px solid rgba(244,242,234,.22);
+    padding:6px 12px;
+    border-radius:99px;
+    white-space:nowrap;
+  }
+  .heroMain{
+    padding-top:44px;
+    display:grid;
+    grid-template-columns:1.3fr .9fr;
+    gap:40px;
+    align-items:end;
+  }
+  @media(max-width:820px){ .heroMain{grid-template-columns:1fr} }
+  h1.title{
+    margin:0;
+    font-family:"Big Shoulders Display",sans-serif;
+    font-weight:700;
+    font-size:clamp(40px,6vw,64px);
+    line-height:.98;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+  }
+  h1.title em{
+    font-style:normal;
+    color:var(--red);
+  }
+  .heroSub{
+    margin:18px 0 0;
+    max-width:46ch;
+    font-size:16px;
+    color:rgba(244,242,234,.78);
+  }
+  .specPlate{
+    justify-self:end;
+    border:1px solid rgba(244,242,234,.2);
+    border-radius:10px;
+    padding:16px 18px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    color:rgba(244,242,234,.72);
+    width:min(100%,300px);
+  }
+  .specPlate .row{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid rgba(244,242,234,.1)}
+  .specPlate .row:first-child{border-top:0}
+  .specPlate .row b{color:#f4f2ea;font-weight:500}
+
+  /* ---------- main ---------- */
+  main{max-width:1120px;margin:-34px auto 0;padding:0 28px 90px;position:relative}
+  .sectionLabel{
+    display:flex;align-items:center;gap:12px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink3);
+    margin:0 0 18px;
+  }
+  .sectionLabel::after{content:"";flex:1;height:1px;background:var(--line)}
+  .sectionLabel.spaced{margin-top:56px}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media(max-width:900px){ .grid{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .card .plate{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    background:var(--bg);
+  }
+  .card .code{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.08em;color:var(--ink3);
+  }
+  .card .icon{
+    width:34px;height:34px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--charcoal);color:#f4f2ea;
+    flex:0 0 auto;
+  }
+  .card .icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .card .body{padding:20px 18px 18px;flex:1;display:flex;flex-direction:column}
+  .card h2{
+    margin:0 0 8px;
+    font-family:"Big Shoulders Display",sans-serif;
+    font-weight:700;font-size:24px;letter-spacing:-.01em;
+    text-wrap:balance;
+  }
+  .card p.desc{margin:0 0 16px;color:var(--ink2);font-size:13.8px;flex:1}
+  .card ul.feat{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:6px}
+  .card ul.feat li{
+    font-size:12.5px;color:var(--ink2);
+    display:flex;align-items:center;gap:8px;
+  }
+  .card ul.feat li::before{
+    content:"";width:5px;height:5px;background:var(--red);border-radius:1px;flex:0 0 auto;
+  }
+  .cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 16px;
+    border-radius:8px;
+    background:var(--charcoal);
+    color:#f4f2ea;
+    text-decoration:none;
+    font-weight:500;font-size:13.5px;
+    border:1px solid var(--charcoal);
+    transition:background .15s, border-color .15s, transform .1s;
+  }
+  .cta:hover{background:var(--red);border-color:var(--red)}
+  .cta:active{transform:translateY(1px)}
+  .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .15s}
+  .cta:hover svg{transform:translateX(2px)}
+  .card.disabled{opacity:.6}
+  .card.disabled .cta{background:var(--line);border-color:var(--line);color:var(--ink3);cursor:not-allowed;pointer-events:none}
+
+  .cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+  /* a card that spans the grid — used by the sales tool */
+  .card.wide{grid-column:1 / -1}
+  .card.wide .body{
+    display:grid;
+    grid-template-columns:1.4fr 1fr auto;
+    gap:28px;
+    align-items:center;
+  }
+  .card.wide h2{margin-bottom:6px}
+  .card.wide p.desc{margin:0}
+  .card.wide ul.feat{margin:0}
+  .card.wide .cta{align-self:center;padding:12px 22px}
+  @media(max-width:900px){
+    .card.wide .body{grid-template-columns:1fr;gap:16px}
+  }
+
+  /* ---------- operations (production trackers) ---------- */
+  .opsIntro{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    margin:-6px 0 20px;
+  }
+  .opsIntro p{margin:0;max-width:56ch;color:var(--ink2);font-size:13.8px}
+  .opsSnap{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink3);
+    border:1px solid var(--line);padding:6px 12px;border-radius:99px;white-space:nowrap;
+  }
+  .opsSnap b{color:var(--ink)}
+
+  .opsKpis{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;margin-bottom:24px;
+  }
+  .opsKpi{background:var(--card);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+  .opsKpiNum{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:26px;font-variant-numeric:tabular-nums;line-height:1}
+  .opsKpiNum.crit{color:var(--red)}
+  .opsKpiNum.ok{color:var(--ok)}
+  .opsKpiLabel{font-size:10.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
+
+  .opsStack{display:flex;flex-direction:column;gap:16px}
+  .opsCard{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .opsPlate{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 18px;border-bottom:1px solid var(--line);background:var(--bg);
+    cursor:pointer;list-style:none;user-select:none;
+  }
+  .opsPlate::-webkit-details-marker{display:none}
+  .opsPlate .icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--charcoal);color:#f4f2ea;flex:0 0 auto}
+  .opsPlate .icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .opsPlate .code{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--ink3);flex:0 0 auto}
+  .opsPlate .opsName{font-family:"Big Shoulders Display",sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em;flex:0 0 auto}
+  .opsFlags{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;justify-content:flex-end}
+  .opsFlag{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;padding:3px 9px;border-radius:99px;white-space:nowrap}
+  .opsFlag.crit{color:var(--red);background:var(--redBg)}
+  .opsFlag.neutral{color:var(--ink3);background:var(--line)}
+  .chev{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--ink3);flex:0 0 auto;transition:transform .18s ease}
+  .chev svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4}
+  details[open] .chev{transform:rotate(90deg)}
+
+  .opsBody{padding:20px 18px 18px;border-top:0}
+
+  .distro{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .distroBar{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--line)}
+  .distroSeg{height:100%}
+  .distroLegend{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .distroLegend .item{display:flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink2)}
+  .swatch{width:8px;height:8px;border-radius:2px;flex:0 0 auto}
+
+  .opsTableWrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+  table.opsTable{border-collapse:collapse;width:100%;min-width:720px}
+  .opsTable thead th{
+    text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink3);font-weight:500;padding:9px 12px;
+    background:var(--bg);border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  .opsTable tbody td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top;color:var(--ink)}
+  .opsTable tbody tr:last-child td{border-bottom:0}
+  .opsTable tbody tr.overdue{background:var(--redBg)}
+  .opsTable td.project{font-weight:600}
+  .opsTable td.client{color:var(--ink2)}
+  .opsTable td.notes{color:var(--ink2);max-width:240px}
+  .opsTable td.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .opsTable td.mono.crit{color:var(--red);font-weight:600}
+  .opsRev{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:6px;background:var(--bg);font-family:"IBM Plex Mono",monospace;font-size:12px}
+
+  .pill{display:inline-block;font-size:11.5px;font-weight:500;padding:3px 10px;border-radius:99px;white-space:nowrap}
+  .pill.st-not-started{color:var(--ink3);background:var(--line)}
+  .pill.st-in-progress{color:var(--blue);background:var(--blueBg)}
+  .pill.st-for-checking{color:var(--amber);background:var(--amberBg)}
+  .pill.st-revision{color:var(--orange);background:var(--orangeBg)}
+  .pill.st-waiting{color:var(--purple);background:var(--purpleBg)}
+  .pill.st-done-not-sub{color:var(--brown);background:var(--brownBg)}
+  .pill.st-submitted{color:var(--ok);background:var(--okBg)}
+
+  .opsEmpty{display:flex;flex-direction:column;gap:6px;padding:22px;border:1px dashed var(--line);border-radius:8px;background:var(--bg)}
+  .opsEmpty strong{font-family:"Big Shoulders Display",sans-serif;font-weight:700;font-size:16px}
+  .opsEmpty span{font-size:12.5px;color:var(--ink2);max-width:52ch}
+
+  /* ---------- how it works ---------- */
+  .how{
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  @media(max-width:760px){ .how{grid-template-columns:1fr 1fr} }
+  .how .step{background:var(--card);padding:20px 18px}
+  .how .step .n{
+    font-family:"IBM Plex Mono",monospace;color:var(--red);font-size:12px;margin-bottom:8px;
+  }
+  .how .step h3{margin:0 0 6px;font-size:14.5px;font-weight:600}
+  .how .step p{margin:0;font-size:12.5px;color:var(--ink2)}
+
+  footer{
+    border-top:1px solid var(--line);
+    margin-top:70px;
+    padding:26px 28px 40px;
+  }
+  .footWrap{
+    max-width:1120px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    font-size:12px;color:var(--ink3);
+  }
+  .footWrap .fmono{font-family:"IBM Plex Mono",monospace;letter-spacing:.03em}
+</style>
+
+<header class="hero">
+  <div class="heroWrap">
+    <div class="brandRow">
+      <div class="wordmark">
+        <span class="sq"></span>RiteHome <small>Modular Systems</small>
+      </div>
+      <div class="tag">Estimator + Ops Suite · Internal Tools</div>
+    </div>
+    <div class="heroMain">
+      <div>
+        <h1 class="title">Quote the build<br>in the <em>room</em>, not<br>back at the desk.</h1>
+        <p class="heroSub">Seven configurators, one for each product line — closets, CR partitions, kitchens, vanities, TV consoles, office systems, and wine bars. Pick modules, toggle accessories, and hand over an itemized number before you leave the site. Then log the lead and watch it move through drafting, procurement, fabrication, and installation.</p>
+      </div>
+      <div class="specPlate">
+        <div class="row"><span>Estimators live</span><b>7</b></div>
+        <div class="row"><span>Output</span><b>Itemized quote</b></div>
+        <div class="row"><span>Install</span><b>None — runs in browser</b></div>
+        <div class="row"><span>Quotes leave device</span><b>No</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sectionLabel">Product lines</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.01 — CLOSET / CABINET</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="12" y1="3" x2="12" y2="21"/><circle cx="9.5" cy="12" r=".6" fill="currentColor" stroke="none"/><circle cx="14.5" cy="12" r=".6" fill="currentColor" stroke="none"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>Closet &amp; Cabinet</h2>
+        <p class="desc">Configure wardrobe and cabinet layouts by preset or module, add accessories, and check the number against a budget target as you go.</p>
+        <ul class="feat">
+          <li>Layout presets + module steppers</li>
+          <li>Accessory add-ons by category</li>
+          <li>Live budget meter with fixes</li>
+        </ul>
+        <a class="cta" id="link-closet" href="https://claude.ai/code/artifact/f1732905-906f-4af6-b764-4904146464d1" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.02 — CR PARTITION</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="4" x2="5" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="19" y1="4" x2="19" y2="20"/><line x1="5" y1="7" x2="12" y2="7"/><line x1="12" y1="17" x2="19" y2="17"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>CR Partition</h2>
+        <p class="desc">Spec comfort-room cubicle partitions — panel counts, hardware grade, and door type — for an instant materials-and-install price.</p>
+        <ul class="feat">
+          <li>Cubicle count &amp; panel sizing</li>
+          <li>Hardware / finish tiers</li>
+          <li>Instant itemized breakdown</li>
+        </ul>
+        <a class="cta" id="link-partition" href="https://claude.ai/code/artifact/6f3d7591-ac77-4b5b-b30f-b3f6dd989365" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.03 — KITCHEN</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 14h16"/><path d="M4 14V6a1 1 0 011-1h6a1 1 0 011 1v8"/><path d="M14 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>Kitchen Quotation</h2>
+        <p class="desc">Build a modular kitchen run — base and wall units, countertop, finish — and get a client-ready quotation on the spot.</p>
+        <ul class="feat">
+          <li>Base + wall unit run length</li>
+          <li>Per-wall countertop measurement</li>
+          <li>Client-ready instant quote</li>
+        </ul>
+        <a class="cta" id="link-kitchen" href="https://claude.ai/code/artifact/b0ae5c94-e19f-497b-a011-7d15ec01e145" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.04 — VANITY</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="13" width="16" height="8" rx="1"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="12" cy="6" r="3"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>Vanity Quotation</h2>
+        <p class="desc">Size a bathroom vanity — cabinet run, basin type, counter material, and mirror — and price the whole assembly in one pass.</p>
+        <ul class="feat">
+          <li>Cabinet width &amp; basin type</li>
+          <li>Counter material selection</li>
+          <li>Mirror &amp; accessory add-ons</li>
+        </ul>
+        <a class="cta" id="link-vanity" href="https://claude.ai/code/artifact/a9f82549-dbbf-4112-9254-51ef17d9a8d8" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.05 — TV CONSOLE</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="10" rx="1"/><rect x="5" y="17" width="14" height="4" rx="1"/><line x1="9" y1="19" x2="9" y2="19.1"/><line x1="15" y1="19" x2="15" y2="19.1"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>TV Console &amp; Feature Wall</h2>
+        <p class="desc">Price a TV console together with the fluted feature wall behind it — panel area, console modules, and finish in one quotation.</p>
+        <ul class="feat">
+          <li>Fluted panel wall area</li>
+          <li>Console module configuration</li>
+          <li>Combined wall + unit pricing</li>
+        </ul>
+        <a class="cta" id="link-tvconsole" href="https://claude.ai/code/artifact/1b7805c8-038d-4b44-af47-4d95a76025b2" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.06 — OFFICE SYSTEMS</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="10" x2="21" y2="10"/><path d="M5 10v9"/><path d="M19 10v9"/><path d="M3 10V7a1 1 0 011-1h16a1 1 0 011 1v3"/><line x1="12" y1="10" x2="12" y2="19"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>Office Tables &amp; Partitions</h2>
+        <p class="desc">Lay out workstation clusters and screen partitions — table counts, desk sizes, and divider heights — for a per-seat and total price.</p>
+        <ul class="feat">
+          <li>Workstation cluster layouts</li>
+          <li>Screen partition heights</li>
+          <li>Per-seat and project totals</li>
+        </ul>
+        <a class="cta" id="link-office" href="https://claude.ai/code/artifact/de769d09-9da1-4336-b079-74aaa88ef078" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="plate">
+        <span class="code">MOD.07 — WINE BAR</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12l-1.5 8a4.5 4.5 0 01-9 0z"/><line x1="12" y1="15.5" x2="12" y2="20"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <h2>Wine Bar &amp; Bottle Storage</h2>
+        <p class="desc">Size a home wine bar — base cabinets, bottle racks, counter top and back panel — with bottle and glass capacity computed from the same dimensions as the price.</p>
+        <ul class="feat">
+          <li>Bottle &amp; glass capacity, not just price</li>
+          <li>Cubby, diamond bin &amp; rail rack styles</li>
+          <li>Counter, back panel &amp; overhang options</li>
+        </ul>
+        <a class="cta" id="link-winebar" href="https://claude.ai/code/artifact/e04149f1-5228-4357-a74c-88bafc6aea0f" target="_blank" rel="noopener">
+          Open Estimator
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectionLabel spaced">Sales tools</div>
+  <div class="grid">
+    <div class="card wide">
+      <div class="plate">
+        <span class="code">SLS.01 — LEAD PIPELINE</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 5h18"/><path d="M6 10h12"/><path d="M9 15h6"/><path d="M11 20h2"/></svg>
+        </span>
+      </div>
+      <div class="body">
+        <div>
+          <h2>Lead Pipeline</h2>
+          <p class="desc">Log every lead from first inquiry through site visit, quotation, and the ₱5,000 reservation, to awarded project. The quote is only half the job — this is the half that tells you what closed.</p>
+        </div>
+        <ul class="feat">
+          <li>Funnel with stage drop-off</li>
+          <li>Win rate by product, source, buyer</li>
+          <li>Lost-reason tracking + CSV export</li>
+        </ul>
+        <a class="cta" id="link-pipeline" href="https://claude.ai/code/artifact/73ab3a32-8921-4a5e-837e-f0ff6d1b4a6b" target="_blank" rel="noopener">
+          Open Pipeline
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectionLabel spaced">Operations</div>
+  <div class="opsIntro">
+    <p>Once a lead is awarded, it moves through four boards — drafting, procurement, fabrication, installation. Toggle a stage open to see who's on what, what's overdue, and what's gone quiet.</p>
+    <div class="opsSnap">Synced from Notion · <b id="opsSnapDate"></b></div>
+  </div>
+  <div class="opsKpis" id="opsKpis"></div>
+  <div class="opsStack" id="opsStack"></div>
+
+  <div class="how">
+    <div class="step">
+      <div class="n">01</div>
+      <h3>Pick the tool</h3>
+      <p>Match the product line to what the client is asking about.</p>
+    </div>
+    <div class="step">
+      <div class="n">02</div>
+      <h3>Configure</h3>
+      <p>Set dimensions, modules, and accessories against the layout.</p>
+    </div>
+    <div class="step">
+      <div class="n">03</div>
+      <h3>Check the meter</h3>
+      <p>Watch the budget meter and apply the suggested fixes if needed.</p>
+    </div>
+    <div class="step">
+      <div class="n">04</div>
+      <h3>Log the lead</h3>
+      <p>Hand over the itemized total, then record it in the pipeline.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footWrap">
+    <span>RiteHome Modular Systems — internal estimator &amp; ops tools</span>
+    <span class="fmono">Estimators run in your browser · ops snapshot refreshed on request</span>
+  </div>
+</footer>
+
+<script>
+  // ---- Operations snapshot, pulled from the Ritehome Suite (Notion) ----
+  const SNAPSHOT_DATE = "2026-08-26";
+
+  const STAGES = [
+    {
+      key: "drafting", label: "Drafting", code: "OPS.01 — DRAFTING", roleLabel: "Drafter",
+      icon: '<path d="M3 21l7-1 11-11-6-6L4 14z"/><path d="M14 4l6 6"/>',
+      rows: [
+        { project: "Walk-in Pantry", client: "Ariel Aragon", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: 1, notes: "Render and Perspective View", updated: "2026-08-25" },
+        { project: "Walk-In Closet", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Render and Minor Edits on Dence 3D", updated: "2026-08-25" },
+        { project: "Ref Cabinet", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Render Needed", updated: "2026-08-24" },
+        { project: "Kitchen and Island", client: "Ariel Aragon", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: 1, notes: "Final Accessories", updated: "2026-08-25" },
+        { project: "Laundry Room", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Reposition Cabinets; Taller Backsplash 900mm to ceiling", updated: "2026-08-24" },
+        { project: "Renovation", client: "Boringa", role: "Dence", status: "In Progress", target: "2026-08-27", revision: 1, notes: "3D", updated: "2026-08-24" },
+        { project: "Mormons File Cab", client: "Mormons", role: "Dence", status: "Submitted", target: "2026-08-20", revision: null, notes: "Design", updated: "2026-08-24" },
+        { project: "Walk-In-Closet", client: "Ariel Aragon", role: "Dence", status: "In Progress", target: "2026-08-28", revision: 1, notes: "Project from Jane — help in revision", updated: "2026-08-24" },
+        { project: "Beverly kitchen (1st & 2nd Floor)", client: "—", role: "Dence", status: "In Progress", target: "2026-08-26", revision: null, notes: "Revision 2A", updated: "2026-08-24" },
+        { project: "Renovation", client: "Barinaga", role: "Dence", status: "In Progress", target: "2026-08-24", revision: null, notes: "3D", updated: "2026-08-19" },
+        { project: "Modular Kitchen", client: "Tiger Faelnar", role: "Krisha", status: "Revision", target: "2026-08-20", revision: 1, notes: "", updated: "2026-08-22" },
+        { project: "Kitchen Repair", client: "Dr. Gozo", role: "Jane", status: "In Progress", target: "2026-08-25", revision: null, notes: "Cutlist Only", updated: "2026-08-25" },
+        { project: "Kitchen Island", client: "Dr. Gozo", role: "Jane", status: "Submitted", target: "2026-08-25", revision: null, notes: "BOM and Render and Cutlist", updated: "2026-08-25" },
+        { project: "TV Console", client: "Nairah Macaradi", role: "Krisha", status: "Not Started", target: null, revision: null, notes: "", updated: "2026-08-24" },
+        { project: "Walk in Closet", client: "Ariel Aragon", role: "Krisha", status: "Done (Not Yet Submitted)", target: "2026-08-24", revision: 1, notes: "Revised Design SKP", updated: "2026-08-24" },
+        { project: "TV Console", client: "Dr. Dy", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: null, notes: "Layout Plan Only", updated: "2026-08-25" }
+      ]
+    },
+    {
+      key: "procurement", label: "Procurement", code: "OPS.02 — PROCUREMENT", roleLabel: "Procurement Officer",
+      icon: '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
+      rows: []
+    },
+    {
+      key: "fabrication", label: "Fabrication", code: "OPS.03 — FABRICATION", roleLabel: "Fabricator",
+      icon: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
+      rows: []
+    },
+    {
+      key: "installation", label: "Installation", code: "OPS.04 — INSTALLATION", roleLabel: "Installer",
+      icon: '<path d="M3 9l9-7 9 7"/><path d="M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/>',
+      rows: []
+    }
+  ];
+
+  const STATUS_ORDER = ["Not Started", "In Progress", "For Checking", "Revision", "Waiting on Client", "Done (Not Yet Submitted)", "Submitted"];
+  const STATUS_CLASS = {
+    "Not Started": "st-not-started", "In Progress": "st-in-progress", "For Checking": "st-for-checking",
+    "Revision": "st-revision", "Waiting on Client": "st-waiting", "Done (Not Yet Submitted)": "st-done-not-sub",
+    "Submitted": "st-submitted"
+  };
+  const STATUS_VAR = {
+    "Not Started": "--ink3", "In Progress": "--blue", "For Checking": "--amber",
+    "Revision": "--orange", "Waiting on Client": "--purple", "Done (Not Yet Submitted)": "--brown",
+    "Submitted": "--ok"
+  };
+
+  function daysBetween(a, b) { return Math.round((new Date(b) - new Date(a)) / 86400000); }
+  function isOverdue(row) { return row.status !== "Submitted" && row.target && daysBetween(row.target, SNAPSHOT_DATE) > 0; }
+  function isStale(row) { return row.status !== "Submitted" && daysBetween(row.updated, SNAPSHOT_DATE) >= 3; }
+  function fmtDate(d) {
+    if (!d) return "—";
+    return new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  }
+
+  document.getElementById("opsSnapDate").textContent = new Date(SNAPSHOT_DATE + "T00:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+  const allRows = STAGES.flatMap(s => s.rows);
+  const activeRows = allRows.filter(r => r.status !== "Submitted");
+  const overdueRows = allRows.filter(isOverdue);
+  const staleRows = allRows.filter(isStale);
+  const submittedRows = allRows.filter(r => r.status === "Submitted");
+
+  const kpis = [
+    { label: "Active projects", value: activeRows.length, cls: "" },
+    { label: "Overdue", value: overdueRows.length, cls: "crit" },
+    { label: "Stale 3+ days", value: staleRows.length, cls: "crit" },
+    { label: "Submitted", value: submittedRows.length, cls: "ok" },
+    ...STAGES.map(s => ({ label: s.label, value: s.rows.length, cls: "" }))
+  ];
+  const kpiEl = document.getElementById("opsKpis");
+  kpis.forEach(k => {
+    const d = document.createElement("div");
+    d.className = "opsKpi";
+    d.innerHTML = `<div class="opsKpiNum ${k.cls}">${k.value}</div><div class="opsKpiLabel">${k.label}</div>`;
+    kpiEl.appendChild(d);
+  });
+
+  const stack = document.getElementById("opsStack");
+  STAGES.forEach(stage => {
+    const details = document.createElement("details");
+    details.className = "opsCard";
+    details.open = true;
+
+    const rows = stage.rows;
+    const overdueCount = rows.filter(isOverdue).length;
+    const staleCount = rows.filter(isStale).length;
+
+    const summary = document.createElement("summary");
+    summary.className = "opsPlate";
+    summary.innerHTML = `
+      <span class="icon"><svg viewBox="0 0 24 24">${stage.icon}</svg></span>
+      <span class="code">${stage.code}</span>
+      <span class="opsName">${stage.label}</span>
+      <span class="opsFlags">
+        ${overdueCount ? `<span class="opsFlag crit">${overdueCount} overdue</span>` : ""}
+        ${staleCount ? `<span class="opsFlag crit">${staleCount} stale</span>` : ""}
+        <span class="opsFlag neutral">${rows.length} project${rows.length === 1 ? "" : "s"}</span>
+      </span>
+      <span class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+    `;
+    details.appendChild(summary);
+
+    const body = document.createElement("div");
+    body.className = "opsBody";
+
+    if (rows.length === 0) {
+      body.innerHTML = `
+        <div class="opsEmpty">
+          <strong>No items yet</strong>
+          <span>${stage.label} hasn't started tracking projects. It mirrors this same board — status pills, target dates, revision counts — the moment the first card lands in its Notion tracker.</span>
+        </div>
+      `;
+    } else {
+      const counts = {};
+      STATUS_ORDER.forEach(s => counts[s] = 0);
+      rows.forEach(r => counts[r.status] = (counts[r.status] || 0) + 1);
+      const total = rows.length;
+
+      const distro = document.createElement("div");
+      distro.className = "distro";
+      const bar = document.createElement("div");
+      bar.className = "distroBar";
+      const legend = document.createElement("div");
+      legend.className = "distroLegend";
+      STATUS_ORDER.forEach(s => {
+        if (!counts[s]) return;
+        const seg = document.createElement("div");
+        seg.className = "distroSeg";
+        seg.style.width = (counts[s] / total * 100) + "%";
+        seg.style.background = `var(${STATUS_VAR[s]})`;
+        bar.appendChild(seg);
+        const item = document.createElement("div");
+        item.className = "item";
+        item.innerHTML = `<span class="swatch" style="background:var(${STATUS_VAR[s]})"></span>${s} · ${counts[s]}`;
+        legend.appendChild(item);
+      });
+      distro.appendChild(bar);
+      distro.appendChild(legend);
+      body.appendChild(distro);
+
+      const sorted = [...rows].sort((a, b) => {
+        const ao = isOverdue(a), bo = isOverdue(b);
+        if (ao !== bo) return ao ? -1 : 1;
+        if (!a.target && !b.target) return 0;
+        if (!a.target) return 1;
+        if (!b.target) return -1;
+        return new Date(a.target) - new Date(b.target);
+      });
+
+      const wrap = document.createElement("div");
+      wrap.className = "opsTableWrap";
+      const table = document.createElement("table");
+      table.className = "opsTable";
+      table.innerHTML = `
+        <thead><tr>
+          <th>Project</th><th>Client</th><th>${stage.roleLabel}</th><th>Status</th><th>Target</th><th>Rev</th><th>Blocker / Notes</th>
+        </tr></thead>
+        <tbody></tbody>
+      `;
+      const tbody = table.querySelector("tbody");
+      sorted.forEach(r => {
+        const tr = document.createElement("tr");
+        const overdue = isOverdue(r);
+        if (overdue) tr.classList.add("overdue");
+        tr.innerHTML = `
+          <td class="project">${r.project}</td>
+          <td class="client">${r.client || "—"}</td>
+          <td>${r.role || "—"}</td>
+          <td><span class="pill ${STATUS_CLASS[r.status]}">${r.status}</span></td>
+          <td class="mono ${overdue ? "crit" : ""}">${fmtDate(r.target)}</td>
+          <td class="mono">${r.revision != null ? `<span class="opsRev">${r.revision}</span>` : "—"}</td>
+          <td class="notes">${r.notes || "—"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      wrap.appendChild(table);
+      body.appendChild(wrap);
+    }
+
+    details.appendChild(body);
+    stack.appendChild(details);
+  });
+</script>
+
+</body></html>
