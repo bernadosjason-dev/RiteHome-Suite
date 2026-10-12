@@ -426,7 +426,7 @@
     <div class="heroMain">
       <div>
         <h1 class="title">Quote the build<br>in the <em>room</em>, not<br>back at the desk.</h1>
-        <p class="heroSub">Seven configurators, one for each product line — closets, CR partitions, kitchens, vanities, TV consoles, office systems, and wine bars. Pick modules, toggle accessories, and hand over an itemized number before you leave the site. Then log the lead and watch it move through drafting, procurement, fabrication, and installation.</p>
+        <p class="heroSub">Seven configurators, one for each product line — closets, CR partitions, kitchens, vanities, TV consoles, office systems, and wine bars. Pick modules, toggle accessories, and hand over an itemized number before you leave the site. Then log the lead and watch it move through procurement, fabrication, and installation.</p>
       </div>
       <div class="specPlate">
         <div class="row"><span>Estimators live</span><b>7</b></div>
@@ -627,7 +627,7 @@
 
   <div class="sectionLabel spaced">Operations</div>
   <div class="opsIntro">
-    <p>Once a lead is awarded, it moves through four boards — drafting, procurement, fabrication, installation. Toggle a stage open to see who's on what, what's overdue, and what's gone quiet.</p>
+    <p>Once a lead is awarded, it moves through three boards — procurement, fabrication, installation. Toggle a stage open to see who's on what, what's overdue, and what's gone quiet.</p>
     <div class="opsSnap">Synced from Notion · <b id="opsSnapDate"></b></div>
   </div>
   <div class="opsKpis" id="opsKpis"></div>
@@ -669,28 +669,6 @@
   const SNAPSHOT_DATE = "2026-08-26";
 
   const STAGES = [
-    {
-      key: "drafting", label: "Drafting", code: "OPS.01 — DRAFTING", roleLabel: "Drafter",
-      icon: '<path d="M3 21l7-1 11-11-6-6L4 14z"/><path d="M14 4l6 6"/>',
-      rows: [
-        { project: "Walk-in Pantry", client: "Ariel Aragon", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: 1, notes: "Render and Perspective View", updated: "2026-08-25" },
-        { project: "Walk-In Closet", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Render and Minor Edits on Dence 3D", updated: "2026-08-25" },
-        { project: "Ref Cabinet", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Render Needed", updated: "2026-08-24" },
-        { project: "Kitchen and Island", client: "Ariel Aragon", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: 1, notes: "Final Accessories", updated: "2026-08-25" },
-        { project: "Laundry Room", client: "Ariel Aragon", role: "Jane", status: "Submitted", target: "2026-08-24", revision: 1, notes: "Reposition Cabinets; Taller Backsplash 900mm to ceiling", updated: "2026-08-24" },
-        { project: "Renovation", client: "Boringa", role: "Dence", status: "In Progress", target: "2026-08-27", revision: 1, notes: "3D", updated: "2026-08-24" },
-        { project: "Mormons File Cab", client: "Mormons", role: "Dence", status: "Submitted", target: "2026-08-20", revision: null, notes: "Design", updated: "2026-08-24" },
-        { project: "Walk-In-Closet", client: "Ariel Aragon", role: "Dence", status: "In Progress", target: "2026-08-28", revision: 1, notes: "Project from Jane — help in revision", updated: "2026-08-24" },
-        { project: "Beverly kitchen (1st & 2nd Floor)", client: "—", role: "Dence", status: "In Progress", target: "2026-08-26", revision: null, notes: "Revision 2A", updated: "2026-08-24" },
-        { project: "Renovation", client: "Barinaga", role: "Dence", status: "In Progress", target: "2026-08-24", revision: null, notes: "3D", updated: "2026-08-19" },
-        { project: "Modular Kitchen", client: "Tiger Faelnar", role: "Krisha", status: "Revision", target: "2026-08-20", revision: 1, notes: "", updated: "2026-08-22" },
-        { project: "Kitchen Repair", client: "Dr. Gozo", role: "Jane", status: "In Progress", target: "2026-08-25", revision: null, notes: "Cutlist Only", updated: "2026-08-25" },
-        { project: "Kitchen Island", client: "Dr. Gozo", role: "Jane", status: "Submitted", target: "2026-08-25", revision: null, notes: "BOM and Render and Cutlist", updated: "2026-08-25" },
-        { project: "TV Console", client: "Nairah Macaradi", role: "Krisha", status: "Not Started", target: null, revision: null, notes: "", updated: "2026-08-24" },
-        { project: "Walk in Closet", client: "Ariel Aragon", role: "Krisha", status: "Done (Not Yet Submitted)", target: "2026-08-24", revision: 1, notes: "Revised Design SKP", updated: "2026-08-24" },
-        { project: "TV Console", client: "Dr. Dy", role: "Jane", status: "Done (Not Yet Submitted)", target: "2026-08-25", revision: null, notes: "Layout Plan Only", updated: "2026-08-25" }
-      ]
-    },
     {
       key: "procurement", label: "Procurement", code: "OPS.02 — PROCUREMENT", roleLabel: "Procurement Officer",
       icon: '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
